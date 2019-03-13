@@ -160,7 +160,6 @@ public class ProductServiceImpl implements ProductService {
     private Product getProduct(String id) throws ProductNotFoundException, IOException {
         Product productFromCache = productRedisRepository.find(id);
         if (productFromCache != null) {
-            System.out.println("Founded in cache");
             return productFromCache;
         }
 

@@ -48,6 +48,10 @@ public class ProductRedisRepositoryImpl extends AbstractRedisRepository<String, 
     public Product find(String productId) throws IOException {
         String productString = findValue(productId);
         logger.info(String.format("PRODUCT FOUNDED FROM REDIS WITH KEY %s AND BODY %s", productId, productString));
+        // if product not founded in redis, when converting to Product object gives error, so return basically null
+        if (productString == null) {
+            return null;
+        }
         return jacksonObjectMapper().readValue(productString, Product.class);
     }
 
