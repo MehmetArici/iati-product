@@ -3,6 +3,7 @@ package com.iati.product.configuration.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
@@ -25,6 +26,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         http
                 .authorizeRequests()
                 .antMatchers("/register").permitAll()
+                .antMatchers(HttpMethod.OPTIONS, "**").permitAll()
                 .antMatchers("/api/**").authenticated()
                 .and()
                 .sessionManagement()

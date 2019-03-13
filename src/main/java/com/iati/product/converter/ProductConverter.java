@@ -18,6 +18,7 @@ public class ProductConverter implements Converter<Product, ProductDto> {
         dto.setProvider(content.getProvider());
         dto.setType(content.getType());
         dto.setId(content.getId());
+        dto.setImageUrl(content.getImageUrl());
         dto.setQuantity(content.getQuantity());
         dto.setStatus(content.getStatus());
         dto.setCreatedAt(content.getCreatedAt());

@@ -11,6 +11,16 @@ public class RegisterUserCommand {
     @JsonIgnore
     private String password;
 
+    private Long amount;
+
+    public Long getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Long amount) {
+        this.amount = amount;
+    }
+
     public String getUsername() {
         return username;
     }

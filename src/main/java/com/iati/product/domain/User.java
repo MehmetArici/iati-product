@@ -63,11 +63,5 @@ public class User extends BaseEntity{
     public void setBlocked(boolean blocked) {
         this.blocked = blocked;
     }
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "owner")
-//    private List<Book> books;
 
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "owner")
-//    private List<BookCollection> bookCollections;
 }

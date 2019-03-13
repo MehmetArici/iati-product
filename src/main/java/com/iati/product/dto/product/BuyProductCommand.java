@@ -1,5 +1,8 @@
 package com.iati.product.dto.product;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class BuyProductCommand {
     private String productId;
 

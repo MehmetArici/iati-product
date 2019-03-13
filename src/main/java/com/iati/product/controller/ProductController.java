@@ -1,10 +1,11 @@
 package com.iati.product.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.iati.product.dto.product.BuyProductCommand;
 import com.iati.product.dto.product.BuyProductResponse;
 import com.iati.product.dto.product.ProductDto;
 import com.iati.product.exceptions.ProductNotFoundException;
+import com.iati.product.exceptions.ProductOutOfStockedException;
+import com.iati.product.exceptions.UserAmountNotValidException;
 import com.iati.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,6 @@ public class ProductController {
 
     @GetMapping(value = {"/get/all"})
     public List<ProductDto> getAll() throws ProductNotFoundException {
-
         return productService.getAll();
     }
 
@@ -36,7 +36,7 @@ public class ProductController {
     }
 
     @PostMapping(value = {"/buy"})
-    public BuyProductResponse buy(@RequestBody BuyProductCommand request) throws ProductNotFoundException, IOException {
+    public BuyProductResponse buy(@RequestBody BuyProductCommand request) throws ProductNotFoundException, IOException, ProductOutOfStockedException, UserAmountNotValidException {
         return productService.buy(request);
     }
 }

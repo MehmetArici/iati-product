@@ -1,7 +1,6 @@
 package com.iati.product.domain;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -30,9 +29,19 @@ public class Product extends BaseEntity {
     @Column(nullable = false)
     private int quantity;
 
-    @Embedded
     @Column(nullable = false)
     private ProductStatus status = ProductStatus.STOCKED;
+
+    @Column
+    private String imageUrl;
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public ProductStatus getStatus() {
         return status;
