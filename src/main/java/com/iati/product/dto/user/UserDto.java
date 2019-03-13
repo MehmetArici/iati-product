@@ -1,50 +1,23 @@
-package com.iati.product.domain;
+package com.iati.product.dto.user;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.iati.product.domain.Product;
 
-import javax.persistence.*;
 import java.util.Set;
 
-@Entity
-@Table(name = "users")
-public class User extends BaseEntity{
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class UserDto {
     private String username;
 
-    @JsonIgnore
     private String password;
 
-    @JsonIgnore
     private boolean enabled = true;
 
-    @JsonIgnore
     private boolean blocked;
 
-    @JsonIgnore
     private Long amount;
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_product",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<Product> products;
-
-    public Set<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(Set<Product> products) {
-        this.products = products;
-    }
-
-    public Long getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Long amount) {
-        this.amount = amount;
-    }
 
     public String getUsername() {
         return username;
@@ -78,4 +51,19 @@ public class User extends BaseEntity{
         this.blocked = blocked;
     }
 
+    public Long getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Long amount) {
+        this.amount = amount;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
 }

@@ -103,9 +103,11 @@ public class ProductServiceImpl implements ProductService {
             User authenticatedUser = userService.getAuthenticatedUser();
             if (authenticatedUser.getAmount() >= product.getPrice()) {
                 product.setQuantity(product.getQuantity() - 1);
+                product.getUsers().add(authenticatedUser);
                 productRepository.save(product);
 
                 authenticatedUser.setAmount(authenticatedUser.getAmount() - product.getPrice());
+                authenticatedUser.getProducts().add(product);
                 userRepository.save(authenticatedUser);
 
                 if (product.getQuantity() == 0) {

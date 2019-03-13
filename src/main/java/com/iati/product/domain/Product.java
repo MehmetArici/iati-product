@@ -1,8 +1,7 @@
 package com.iati.product.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "products")
@@ -34,6 +33,17 @@ public class Product extends BaseEntity {
 
     @Column
     private String imageUrl;
+
+    @ManyToMany(mappedBy = "products")
+    private Set<User> users;
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 
     public String getImageUrl() {
         return imageUrl;

@@ -14,28 +14,28 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = {"/api/product"})
+@RequestMapping(value = {"/api/product/"})
 public class ProductController {
 
     @Autowired
     private ProductService productService;
 
-    @GetMapping(value = {"/get/all"})
+    @GetMapping(value = {"all"})
     public List<ProductDto> getAll() throws ProductNotFoundException {
         return productService.getAll();
     }
 
-    @GetMapping(value = {"/get/all/{type}"})
+    @GetMapping(value = {"all/{type}"})
     public List<ProductDto> getAll(@PathVariable String type) throws ProductNotFoundException {
         return productService.findAllByType(type);
     }
 
-    @GetMapping(value = {"/get/{id}"})
+    @GetMapping(value = {"{id}"})
     public ProductDto get(@PathVariable String id) throws ProductNotFoundException, IOException {
         return productService.getSingleProduct(id);
     }
 
-    @PostMapping(value = {"/buy"})
+    @PostMapping(value = {"buy"})
     public BuyProductResponse buy(@RequestBody BuyProductCommand request) throws ProductNotFoundException, IOException, ProductOutOfStockedException, UserAmountNotValidException {
         return productService.buy(request);
     }
